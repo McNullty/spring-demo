@@ -12,7 +12,7 @@ public class GreetingController {
   @GetMapping("/")
   public String greeting(
       @RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-    model.addAttribute("name", name);
+    model.addAttribute("nameNesto", name);
 
     return "greeting";
   }
@@ -20,12 +20,14 @@ public class GreetingController {
   @GetMapping("/better")
   public ModelAndView greetingBetter(
       @RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-    model.addAttribute("name", name);
+    model.addAttribute("nameNesto", name);
 
     ModelAndView mav = new ModelAndView("greeting");
     mav.addAllObjects(model.asMap());
+    mav.addObject("novo", "Test Hello");
 
     return mav;
   }
+
 
 }
